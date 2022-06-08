@@ -1,9 +1,9 @@
-# Nim_DInvoke
-D/Invoke via Nim
+# Nim DInvoke
+D/Invoke implementation in Nim
 
 All Nim binaries typically expose the same 58-60 Windows API functions:
 
-![alt text](https://raw.githubusercontent.com/S3cur3Th1sSh1t/Nim_DInvoke/main/images/ExposedFunctions.PNG)
+![alt text](https://github.com/S3cur3Th1sSh1t/Nim_DInvoke/raw/main/images/ExposedFunctions.PNG)
 
 All other Windows API functions are typically resolved on runtime via `GetProcAddress` and `LoadLibraryA` as mentioned in [OffensiveNim](https://github.com/byt3bl33d3r/OffensiveNim#opsec-considerations) or [this blog post](https://web.archive.org/web/20210117002945/https://secbytes.net/implant-roulette-part-1:-nimplant/).
 
@@ -11,7 +11,7 @@ So, it's not possible to hide API imports (completely) via DInvoke in Nim, unles
 
 Manually parsing the functions from PEB instead of using `GetProcAddress` and `LoadLibraryA` is still stealthier than the default Nim behaviour. To also avoid inline hooking for example manual mapping of a fresh DLL copy would be needed as mentioned in [TheWovers DInvoke blog post](https://thewover.github.io/Dynamic-Invoke/):
 
-![alt text](https://raw.githubusercontent.com/S3cur3Th1sSh1t/Nim_DInvoke/main/images/ExposedFunctions.PNG)
+![alt text](https://github.com/S3cur3Th1sSh1t/Nim_DInvoke/raw/main/images/BypassHooking.PNG)
 
 This is - however - not implemented here `yet`. I'm currently only using `LdrLoadDll` to load new DLL's into memory.
 
@@ -41,4 +41,4 @@ In my testings I faced strange behaviours for some API functions, which need spe
 
 The example, when successfully looks like the following:
 
-![alt text](https://raw.githubusercontent.com/S3cur3Th1sSh1t/Nim_DInvoke/main/images/Example.PNG)
+![alt text](https://github.com/S3cur3Th1sSh1t/Nim_DInvoke/raw/main/images/Example.PNG)
